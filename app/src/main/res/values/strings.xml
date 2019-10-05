@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application Intent</string>
+    <string name="btn_1">PINDAH ACTIVITY</string>
+    <string name="btn_2">PINDAH ACTIVITY DENGAN DATA</string>
+    <string name="btn_3">PINDAH ACTIVITY DENGAB OBJECT</string>
+    <string name="btn_4">DIAL A NUMBER</string>
+    <string name="btn_5">PINDAH ACTIVITY UNTUK RESULT</string>
+</resources>
