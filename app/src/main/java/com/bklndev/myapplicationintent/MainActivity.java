@@ -2,28 +2,26 @@ package com.bklndev.myapplicationintent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnPindah;
-    Button btnPindahData;
-    Button btnPindahObject;
-    Button btnDial;
-    Button btnPindahResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnPindah = findViewById(R.id.btn_pindah);
-        btnPindahData = findViewById(R.id.btn_pindah_data);
-        btnPindahObject = findViewById(R.id.btn_pindah_object);
-        btnDial = findViewById(R.id.btn_dial);
-        btnPindahResult = findViewById(R.id.btn_pindah_result);
+        Button btnPindah = findViewById(R.id.btn_pindah);
+        Button btnPindahData = findViewById(R.id.btn_pindah_data);
+        Button btnPindahObject = findViewById(R.id.btn_pindah_object);
+        Button btnDial = findViewById(R.id.btn_dial);
+        Button btnPindahResult = findViewById(R.id.btn_pindah_result);
+
 
         btnPindah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         btnPindahObject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: 10/4/2019
+                intentPindahObject();
             }
         });
 
@@ -56,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btnPindahResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: 10/4/2019  
+                intentResult();
             }
         });
     }
@@ -74,8 +72,37 @@ public class MainActivity extends AppCompatActivity {
         startActivity(moveDataIntent);
     }
 
+    private void intentPindahObject() {
+        Intent moveObjectIntent = new Intent(MainActivity.this, MoveObjectActivity.class);
+        UserData userData = new UserData("Barka Satya", "barka.satya@amikom.ac.id", "active");
+        moveObjectIntent.putExtra("userdata", userData);
+        startActivity(moveObjectIntent);
+    }
+
     private void intentDial() {
         Intent dialIntent = new Intent(Intent.ACTION_DIAL);
         startActivity(dialIntent);
+    }
+
+    private void intentResult() {
+        Intent resultIntent = new Intent(this, ResultActivity.class);
+        startActivityForResult(resultIntent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        TextView tvResult = findViewById(R.id.tv_result);
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                String result = data.getStringExtra("result");
+                tvResult.setText(result);
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                String result = "Gagal";
+                tvResult.setText(result);
+            }
+        }
     }
 }
