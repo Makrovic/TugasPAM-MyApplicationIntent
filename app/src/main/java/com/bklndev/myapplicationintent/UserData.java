@@ -3,6 +3,10 @@ package com.bklndev.myapplicationintent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+//di sini class UserData mengimplementasikan Parcelable
+//dan di dalam class berisi getter untuk setiap datanya
+//yang nanti getternya akan dipanggil untuk menampilkan
+//data yang dikirim
 public class UserData implements Parcelable {
     private final String exname;
     private final String email;
@@ -20,6 +24,7 @@ public class UserData implements Parcelable {
         return status;
     }
 
+    //constructor userdata berisi setter
     public UserData(String exname, String email, String status) {
         this.exname = exname;
         this.email = email;

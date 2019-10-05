@@ -16,6 +16,7 @@ public class MoveObjectActivity extends AppCompatActivity {
         TextView tvEmail = findViewById(R.id.tv_email);
         TextView tvStatus = findViewById(R.id.tv_status);
 
+        //mengambil object yang telah diparse
         UserData userData = getIntent().getParcelableExtra("userdata");
 
         String exname = userData.getExname();

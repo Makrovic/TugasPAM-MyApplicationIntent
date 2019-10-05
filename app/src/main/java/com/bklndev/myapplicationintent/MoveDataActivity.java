@@ -13,6 +13,7 @@ public class MoveDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_move_data);
 
+        //instansiasi
         TextView tvExname = findViewById(R.id.tv_exname);
         TextView tvEmail = findViewById(R.id.tv_email);
         TextView tvStatus = findViewById(R.id.tv_status);
@@ -20,6 +21,7 @@ public class MoveDataActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        //menset variabel dengan mengambil data dari intent
         String exname = intent.getStringExtra("exname");
         String email = intent.getStringExtra("email");
         String status = intent.getStringExtra("status");
